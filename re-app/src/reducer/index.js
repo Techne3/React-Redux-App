@@ -3,8 +3,9 @@ import {START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE} from '../actions'
 
 const initialState = {
     doggos: [],
-    status: false,
-}
+    isFetching: false,
+    error: '',
+};
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -14,6 +15,20 @@ export const reducer = (state = initialState, action) => {
                   isFetching: true,
                   error: ''
                 }
+         case FETCH_SUCCESS:
+             return {
+                 ...state,
+                 isFetching:false,
+                 error: '',
+                 doggos: action.payload,
+             }
+         case FETCH_FAILURE:
+             return {
+                 ...state,
+                 error: action.payload,
+                 isFetching: false,
+
+             }
         default:
             return state
     }

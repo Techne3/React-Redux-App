@@ -11,10 +11,21 @@ export const fetchFacts = () => dispatch => {
     dispatch({ type: START_FETCHING });
     // do some async action and dispatch an error or success action
     axios
-      .get('https://dog.ceo/api/breeds/image/random')
-      .then(res =>  console.log(res))
-
+      .get('https://dog.ceo/api/breed/husky/images')
+      .then(res => console.log(res.data) )
       .catch(err => dispatch({ type: FETCH_FAILURE, payload: err.response }));
+      // dispatch({type: 'FETCH_SUCCESS', payload:res. data})
   };
+
+//   dispatch({type:FETCH_SUCCESS, payload: res.data.message})
+
+  // redux thunk
+  const tunk = next => action => store=> {
+      if (typeof action === 'object'){
+          next(action); 
+      }else if (typeof action === 'fucntion'){
+          action(store.dispatch);// stop action
+      }
+  }
 
 //   https://cors-anywhere.herokuapp.com/
