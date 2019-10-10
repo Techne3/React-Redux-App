@@ -15,12 +15,12 @@ if (props.isFetching){
     return <h2>Loading Doggos...</h2>
 }
     return (
-    <div>
+    <div className="wrapper">
     {props.error && <p>{props.error}</p>}
       {props.doggos.map(imgs => (
         <Dog  imgs={imgs} />
         ))}
-        <img src={props.imgs} alt="dogs"/>
+        {/* <img src={props.imgs} alt="dogs"/> */}
     </div>
     )
 }

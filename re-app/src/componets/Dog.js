@@ -4,7 +4,7 @@ const Dog = (props)=> {
     console.log(props)
     return (
         <div>
-            <img src={props.imgs} alt="dogs" />
+            <img src={props.imgs} alt="dogs"  className="pictureWrap" />
         </div>
     )
 }

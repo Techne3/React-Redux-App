@@ -12,7 +12,7 @@ export const fetchFacts = () => dispatch => {
     // do some async action and dispatch an error or success action
     axios
       .get('https://dog.ceo/api/breed/husky/images')
-      .then(res => console.log(res.data) )
+      .then(res => dispatch({type:FETCH_SUCCESS, payload: res.data.message}) )
       .catch(err => dispatch({ type: FETCH_FAILURE, payload: err.response }));
       // dispatch({type: 'FETCH_SUCCESS', payload:res. data})
   };
